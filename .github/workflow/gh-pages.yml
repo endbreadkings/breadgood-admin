@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --prod --pure-lockfile
 
-      - name : Build
+      - name: Build
         run: yarn build && yarn generate
 
       - name: Deploy
