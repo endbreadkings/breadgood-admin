@@ -9,7 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout source code
+        uses: actions/checkout@v2
 
       - name: Setup Node
         uses: actions/setup-node@v2.1.2
@@ -25,10 +26,10 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: yarn install --prod --pure-lockfile
+        run: npm install 
 
       - name: Build
-        run: yarn run build 
+        run: npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
