@@ -7,7 +7,17 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "DashBoard",
+    beforeEnter: function routeHome(to, from, next) {
+      if (store.getters["isLogin"]) {
+        next("/dashboard");
+      } else {
+        next("/login");
+      }
+    }
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
     component: () => import("../views/DashBoard.vue"),
     beforeEnter
   },

@@ -72,7 +72,7 @@ export default {
       try {
         const result = await this.$store.dispatch("LOGIN", userData);
         console.log("result", result);
-        this.$router.push("/");
+        this.$router.push("/dashBoard");
       } catch (error) {
         error.response.data.code = -2001;
         apiErrorParser(error.response);
