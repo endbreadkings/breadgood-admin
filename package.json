@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "webpack --mode production",
-    "predeploy": "npm run build",
+    "build": "vue-cli-service build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
