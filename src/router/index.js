@@ -38,7 +38,7 @@ function beforeEnter(to, from, next) {
   if (store.getters["isLogin"]) {
     next();
   } else {
-    alert("sign in please");
+    alert("로그인 해주세요. 😊");
     next("/login");
   }
 }

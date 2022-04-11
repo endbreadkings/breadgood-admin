@@ -1,51 +1,54 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+    <template v-if="isLogin">
+      <v-app-bar app color="grey900" dark>
+        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-      <div class="d-flex align-center" @click="drawer = true"></div>
+        <div class="d-flex align-center" @click="drawer = true"></div>
 
-      <v-spacer></v-spacer>
-      <span class="mr-2"><b>빵긋 관리자</b></span>
-      <v-img
-        alt="Vuetify Logo"
-        class="shrink mr-2"
-        contain
-        src="@/assets/images/login-hello.png"
-        transition="scale-transition"
-        width="40"
-      />
-    </v-app-bar>
+        <v-spacer></v-spacer>
+        <span class="mr-2"><b>빵긋 관리자</b></span>
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="@/assets/images/login-hello.png"
+          transition="scale-transition"
+          width="40"
+        />
+      </v-app-bar>
 
-    <v-navigation-drawer
-      class="primary accent-4"
-      v-model="drawer"
-      dark
-      absolute
-      temporary
-    >
-      <v-list>
-        <v-list-item v-for="item in items" :key="item.title" :link="item.link">
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
+      <v-navigation-drawer
+        class="primary accent-4"
+        v-model="drawer"
+        dark
+        color="grey900"
+        absolute
+        temporary
+        height="100vh"
+      >
+        <v-list>
+          <v-list-item v-for="item in items" :key="item.title" link>
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
 
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
 
-      <template v-slot:append>
-        <div class="pa-2">
-          <v-btn dark block>
-            Logout
-          </v-btn>
-        </div>
-      </template>
-      <v-spacer></v-spacer>
-    </v-navigation-drawer>
-
+        <template v-slot:append>
+          <div class="pa-2">
+            <v-btn block color="grey700" @click="logout">
+              <span style="font-size:16px">나가기</span>
+            </v-btn>
+          </div>
+        </template>
+        <v-spacer></v-spacer>
+      </v-navigation-drawer>
+    </template>
     <v-main>
       <router-view />
     </v-main>
@@ -53,7 +56,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
+  computed: {
+    ...mapGetters(["isLogin"])
+  },
   name: "App",
   data: () => ({
     drawer: false,
@@ -73,12 +80,18 @@ export default {
         link: "/bakery/category"
       }
     ]
-  })
+  }),
+  methods: {
+    async logout() {
+      this.$store.commit("LOGOUT");
+      this.$router.push("/login");
+    }
+  }
 };
 </script>
 
 <style scoped>
 .theme--light.v-application {
-  background: linear-gradient(180deg, #ffffff 0%, #f6f6f6 100%);
+  background-color: #f4f4f4;
 }
 </style>

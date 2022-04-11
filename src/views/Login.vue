@@ -5,7 +5,7 @@
         <v-flex xs10 sm5 md3>
           <v-card class="elevation-6">
             <v-toolbar dark color="primary">
-              <v-toolbar-title fluid>좋은 하루입니다. 😊 </v-toolbar-title>
+              <v-toolbar-title><b>빵긋</b> 😊 </v-toolbar-title>
             </v-toolbar>
             <form @submit.prevent="formSubmit">
               <v-card-text>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import apiErrorParser from "@/utils/ApiErrorParser";
 export default {
   name: "Login",
   data() {
@@ -56,21 +57,21 @@ export default {
   },
   methods: {
     async formSubmit() {
-      console.log("formSubmit");
       const userData = {
         email: this.email,
         password: this.pwsd
       };
-      const result = await this.$store.dispatch("LOGIN", userData);
-      console.log("result", result);
-      this.$router.push("/");
+      try {
+        const result = await this.$store.dispatch("LOGIN", userData);
+        console.log("result", result);
+        this.$router.push("/");
+      } catch (error) {
+        error.response.data.code = -2001;
+        apiErrorParser(error.response);
+      }
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-.theme--light.v-application {
-  background-color: #5c5c5c;
-}
-</style>
+<style lang="scss" scoped></style>
