@@ -25,7 +25,7 @@
       temporary
     >
       <v-list>
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="item in items" :key="item.title" :link="item.link">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -43,6 +43,7 @@
           </v-btn>
         </div>
       </template>
+      <v-spacer></v-spacer>
     </v-navigation-drawer>
 
     <v-main>
@@ -58,11 +59,19 @@ export default {
     drawer: false,
     group: null,
     items: [
-      { title: "대시보드", icon: "mdi-view-dashboard" },
-      { title: "약관 관리", icon: "mdi-account-box" },
-      { title: "최애빵 관리", icon: "mdi-folder-heart" },
-      { title: "리뷰 이모지 관리", icon: "mdi-emoticon" },
-      { title: "빵집 카테고리 관리", icon: "mdi-shape" }
+      { title: "대시보드", icon: "mdi-view-dashboard", link: "/" },
+      { title: "약관 관리", icon: "mdi-account-box", link: "/terms" },
+      { title: "최애빵 관리", icon: "mdi-folder-heart", link: "/favorite" },
+      {
+        title: "리뷰 이모지 관리",
+        icon: "mdi-emoticon",
+        link: "/bakery/emoji"
+      },
+      {
+        title: "빵집 카테고리 관리",
+        icon: "mdi-shape",
+        link: "/bakery/category"
+      }
     ]
   })
 };

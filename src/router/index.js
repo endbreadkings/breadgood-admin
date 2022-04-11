@@ -18,6 +18,11 @@ const routes = [
     beforeEnter(to, from, next) {
       store.getters["isLogin"] ? next("/") : next();
     }
+  },
+  {
+    path: "*",
+    name: "NotFound",
+    component: () => import("../views/NotFound.vue")
   }
 ];
 
