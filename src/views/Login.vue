@@ -7,7 +7,7 @@
             <v-toolbar dark color="primary">
               <v-toolbar-title><b>빵긋</b> 😊 </v-toolbar-title>
             </v-toolbar>
-            <form @submit.prevent="formSubmit">
+            <v-form @submit.prevent="formSubmit" v-model="valid">
               <v-card-text>
                 <v-text-field
                   prepend-icon="mdi-account"
@@ -17,6 +17,7 @@
                   :autofocus="autofocus"
                   required
                   :rules="emailRules"
+                  @keyup.enter="formSubmit"
                 ></v-text-field>
                 <v-text-field
                   v-model="pwsd"
@@ -25,13 +26,16 @@
                   label="비밀번호"
                   type="password"
                   :rules="pwsdRules"
+                  @keyup.enter="formSubmit"
                 ></v-text-field>
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click="formSubmit">로그인</v-btn>
+                <v-btn color="primary" :disabled="!valid" @click="formSubmit"
+                  >로그인</v-btn
+                >
               </v-card-actions>
-            </form>
+            </v-form>
           </v-card>
         </v-flex>
       </v-layout>
@@ -45,13 +49,14 @@ export default {
   name: "Login",
   data() {
     return {
+      valid: false,
       autofocus: true,
-      email: "test@breadgood.com",
+      email: "",
       emailRules: [
         v => !!v || "이메일을 입력해주세요.",
         v => /.+@.+\..+/.test(v) || "올바른 이메일을 입력해주세요."
       ],
-      pwsd: "1234",
+      pwsd: "",
       pwsdRules: [v => !!v || "비밀번호를 입력해주세요."]
     };
   },
