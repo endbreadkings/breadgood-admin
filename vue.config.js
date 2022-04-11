@@ -3,7 +3,7 @@ const config = {
   devServer: {
     overlay: false
   },
-  publicPath: "/breadgood-admin/",
+  // publicPath: process.env.NODE_ENV === "production" ? "/breadgood-admin/" : "",
   outputDir: "dist",
   transpileDependencies: ["vuetify"]
 };
