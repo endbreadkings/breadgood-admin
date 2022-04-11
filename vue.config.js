@@ -3,10 +3,7 @@ const config = {
   devServer: {
     overlay: false
   },
-  publicPath:
-    process.env.NODE_ENV === "production"
-      ? "/endbreadkings.github.io/breadgood-admin/"
-      : "",
+  publicPath: "/breadgood-admin/",
   outputDir: "dist",
   transpileDependencies: ["vuetify"]
 };
