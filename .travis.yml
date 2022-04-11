@@ -18,6 +18,5 @@ deploy:
  on:
    branch: main
 
-   
 # notifications:
 #   slack: hidy-group:oPpaFIQ1OSKnREoNmZEioGxk
