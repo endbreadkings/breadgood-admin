@@ -17,5 +17,7 @@ deploy:
  local_dir: docs
  on:
    branch: main
+
+   
 # notifications:
 #   slack: hidy-group:oPpaFIQ1OSKnREoNmZEioGxk
