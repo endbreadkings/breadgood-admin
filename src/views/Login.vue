@@ -62,6 +62,9 @@ export default {
   },
   methods: {
     async formSubmit() {
+      if (!this.valid) {
+        return;
+      }
       const userData = {
         email: this.email,
         password: this.pwsd
