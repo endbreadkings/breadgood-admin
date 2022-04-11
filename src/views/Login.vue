@@ -7,8 +7,8 @@
             <v-toolbar dark color="primary">
               <v-toolbar-title fluid>좋은 하루입니다. 😊 </v-toolbar-title>
             </v-toolbar>
-            <v-card-text>
-              <v-form>
+            <form @submit.prevent="formSubmit">
+              <v-card-text>
                 <v-text-field
                   prepend-icon="mdi-account"
                   v-model="email"
@@ -26,12 +26,12 @@
                   type="password"
                   :rules="pwsdRules"
                 ></v-text-field>
-              </v-form>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" to="/">로그인</v-btn>
-            </v-card-actions>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" @click="formSubmit">로그인</v-btn>
+              </v-card-actions>
+            </form>
           </v-card>
         </v-flex>
       </v-layout>
@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       autofocus: true,
-      email: "goodgood@breadgood.com",
+      email: "test@breadgood.com",
       emailRules: [
         v => !!v || "이메일을 입력해주세요.",
         v => /.+@.+\..+/.test(v) || "올바른 이메일을 입력해주세요."
@@ -53,6 +53,18 @@ export default {
       pwsd: "1234",
       pwsdRules: [v => !!v || "비밀번호를 입력해주세요."]
     };
+  },
+  methods: {
+    async formSubmit() {
+      console.log("formSubmit");
+      const userData = {
+        email: this.email,
+        password: this.pwsd
+      };
+      const result = await this.$store.dispatch("LOGIN", userData);
+      console.log("result", result);
+      this.$router.push("/");
+    }
   }
 };
 </script>
