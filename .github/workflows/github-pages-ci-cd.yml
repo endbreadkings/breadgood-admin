@@ -28,7 +28,7 @@ jobs:
         run: yarn install --prod --pure-lockfile
 
       - name: Build
-        run: yarn build && yarn generate
+        run: yarn build 
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
