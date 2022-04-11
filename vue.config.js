@@ -3,6 +3,7 @@ const config = {
   devServer: {
     overlay: false
   },
+  publicPath: "/breadgood-admin/",
   outputDir: "dist",
   transpileDependencies: ["vuetify"]
 };
