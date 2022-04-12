@@ -1,28 +1,34 @@
 <template>
-  <v-container fluid width="100%">
-    <v-layout align-start justify-center>
+  <v-container fluid mt-0 pa-0 fill-height>
+    <v-layout child-flex>
       <v-data-table
         :headers="headers"
         :items="categories"
         class="elevation-1 "
-        dark
+        calculate-widths
+        item-key="id"
+        hide-default-footer
       >
-        <template v-slot:[`item.color`]="{ item }">
-          <v-chip :color="item.color" dark>
-            {{ item.calories }}
-          </v-chip>
-        </template>
-        <template v-slot:[`item.titleColoredImgUrl`]="{ item }">
-          <v-img :src="item.titleColoredImgUrl" max-width="100" />
-        </template>
-        <template v-slot:[`item.titleUncoloredImgUrl`]="{ item }">
-          <v-img :src="item.titleUncoloredImgUrl" max-width="100" />
-        </template>
-        <template v-slot:[`item.makerImgUrl`]="{ item }">
-          <v-img :src="item.makerImgUrl" max-width="100" />
-        </template>
-        <template v-slot:[`item.content`]="{ item }">
-          <pre v-html="item.content"></pre>
+        <template v-slot:body="props">
+          <draggable
+            ref="draggable"
+            :list="props.items"
+            tag="tbody"
+            @start="onDraggableStart"
+            @update="onDraggableUpdate"
+            class="draggable"
+          >
+            <tr v-for="(item, index) in props.items" :key="index">
+              <td>{{ item.title }}</td>
+              <td><v-img :src="item.titleColoredImgUrl" max-width="100" /></td>
+              <td>
+                <v-img :src="item.titleUncoloredImgUrl" max-width="100" />
+              </td>
+              <td><v-img :src="item.makerImgUrl" max-width="100" /></td>
+              <td><v-chip :color="item.color" dark></v-chip></td>
+              <td><pre v-html="item.content"></pre></td>
+            </tr>
+          </draggable>
         </template>
 
         <!-- dialog -->
@@ -104,9 +110,13 @@
 </template>
 
 <script>
+import draggable from "vuedraggable";
+
 export default {
   name: "BakeryCategory",
-  components: {},
+  components: {
+    draggable
+  },
   data() {
     return {
       headers: [
@@ -157,6 +167,7 @@ export default {
           content: "빵을 전문적으로 파는\n일반 베이커리"
         }
       ],
+      currentOrder: [],
       dialog: false,
       dialogDelete: false,
       editedIndex: -1,
@@ -198,6 +209,14 @@ export default {
   },
   methods: {
     initialize() {},
+    onDraggableStart() {
+      this.currentOrder = this.categories;
+    },
+    onDraggableUpdate(event) {
+      alert("순서 변경 기능은 추후에 개발 예정입니다.");
+      console.log("event", event);
+      this.categories = this.currentOrder;
+    },
 
     close() {
       this.dialog = false;
@@ -225,4 +244,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.draggable {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+/* (Optional) Apply a "closed-hand" cursor during drag operation. */
+.sortable-chosen {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+</style>
