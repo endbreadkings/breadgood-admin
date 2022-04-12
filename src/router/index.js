@@ -29,6 +29,14 @@ const routes = [
       store.getters["isLogin"] ? next("/") : next();
     }
   },
+
+  {
+    path: "/bakery/category",
+    name: "bakeryCategory",
+    component: () => import("../views/BakeryCategory.vue"),
+    beforeEnter
+  },
+
   {
     path: "*",
     name: "NotFound",
