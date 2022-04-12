@@ -5,4 +5,13 @@ function fetchBakeryCategories() {
   return bakeryCategory.get("/list");
 }
 
-export { fetchBakeryCategories };
+function createBakeryCategory(bakeryCategoryForm) {
+  console.log("bakeryCategoryForm", bakeryCategoryForm);
+  return bakeryCategory.post("/", bakeryCategoryForm, {
+    headers: {
+      "Content-type": "multipart/form-data"
+    }
+  });
+}
+
+export { fetchBakeryCategories, createBakeryCategory };
