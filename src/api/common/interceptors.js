@@ -6,7 +6,7 @@ export function setInterceptors(instance) {
     function(config) {
       // Do something before request is sent
       // console.log(config);
-      config.headers.Authorization = store.getters["accessToken"];
+      config.headers.Authorization = store.getters["getAccessToken"];
       return config;
     },
     function(error) {

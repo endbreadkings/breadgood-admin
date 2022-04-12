@@ -7,8 +7,16 @@ const errorParser = async response => {
     return;
   }
 
+  if (
+    !Object.prototype.hasOwnProperty.call(response, "data") ||
+    !Object.prototype.hasOwnProperty.call(response.data, "code")
+  ) {
+    alert("문제가 발생하였습니다.");
+    return;
+  }
+
   switch (response.data.code) {
-    case -1301:
+    case -1301: // 일치하지 않은 로그인 정보
       alert("로그인 정보를 확인해주세요.");
       break;
 
@@ -22,7 +30,7 @@ const errorParser = async response => {
       break;
 
     default:
-      break;
+      alert("문제가 생겼네요..");
   }
 };
 

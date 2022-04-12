@@ -8,6 +8,8 @@
         calculate-widths
         item-key="id"
         hide-default-footer
+        :loading="isLoading"
+        loading-text="Loading... Please wait"
       >
         <template v-slot:body="props">
           <draggable
@@ -111,7 +113,7 @@
 
 <script>
 import draggable from "vuedraggable";
-
+import { fetchBakeryCategories } from "../api/bakeryCategory";
 export default {
   name: "BakeryCategory",
   components: {
@@ -140,33 +142,8 @@ export default {
         { text: "내용", value: "content", sortable: false }
         // { text: "", value: "actions", sortable: false }
       ],
-      categories: [
-        {
-          id: 2,
-          title: "음료&빵",
-          titleColoredImgUrl:
-            "https://d74hbwjus7qtu.cloudfront.net/admin/cate1_blue.svg",
-          titleUncoloredImgUrl:
-            "https://d74hbwjus7qtu.cloudfront.net/admin/cate1_white.svg",
-          color: "#4579FF",
-          makerImgUrl: "https://d74hbwjus7qtu.cloudfront.net/admin/pin_on.png",
-          sortNumber: 1,
-          content: "커피&차와 함께 빵을\n즐길수 있는 베이커리 카페"
-        },
-        {
-          id: 1,
-          title: "빵에집중",
-          titleColoredImgUrl:
-            "https://d74hbwjus7qtu.cloudfront.net/admin/cate2_yellow.svg",
-          titleUncoloredImgUrl:
-            "https://d74hbwjus7qtu.cloudfront.net/admin/cate2_white.svg",
-          color: "#FEBE52",
-          makerImgUrl:
-            "https://d74hbwjus7qtu.cloudfront.net/admin/pin_be_off.png",
-          sortNumber: 2,
-          content: "빵을 전문적으로 파는\n일반 베이커리"
-        }
-      ],
+      categories: [],
+      isLoading: true,
       currentOrder: [],
       dialog: false,
       dialogDelete: false,
@@ -192,7 +169,7 @@ export default {
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "New Item" : "Edit Item";
+      return this.editedIndex === -1 ? "추가" : "Edit Item";
     }
   },
 
@@ -204,13 +181,17 @@ export default {
       val || this.closeDelete();
     }
   },
-  created() {
-    this.initialize();
+  async created() {
+    await this.initialize();
+    this.isLoading = false;
   },
   methods: {
-    initialize() {},
+    async initialize() {
+      const { data } = await fetchBakeryCategories();
+      this.categories = data;
+    },
     onDraggableStart() {
-      this.currentOrder = this.categories;
+      this.currentOrder = JSON.parse(JSON.stringify(this.categories));
     },
     onDraggableUpdate(event) {
       alert("순서 변경 기능은 추후에 개발 예정입니다.");
