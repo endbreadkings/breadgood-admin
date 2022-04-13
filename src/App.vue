@@ -28,7 +28,12 @@
         height="100vh"
       >
         <v-list>
-          <v-list-item v-for="item in items" :key="item.title" link>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+            :to="item.link"
+          >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -66,9 +71,9 @@ export default {
     drawer: false,
     group: null,
     items: [
-      { title: "대시보드", icon: "mdi-view-dashboard", link: "/" },
+      { title: "대시보드", icon: "mdi-view-dashboard", link: "/dashboard" },
       { title: "약관 관리", icon: "mdi-account-box", link: "/terms" },
-      { title: "최애빵 관리", icon: "mdi-folder-heart", link: "/favorite" },
+      { title: "최애빵 관리", icon: "mdi-folder-heart", link: "/bread/style" },
       {
         title: "리뷰 이모지 관리",
         icon: "mdi-emoticon",
@@ -92,6 +97,11 @@ export default {
 
 <style scoped>
 .theme--light.v-application {
-  background-color: #f4f4f4;
+  background-color: #1e1e1e;
+}
+
+.v-list-item--active {
+  background-color: #4579ff;
+  color: white;
 }
 </style>
