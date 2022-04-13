@@ -26,7 +26,7 @@
               <td>
                 <v-img :src="item.titleUncoloredImgUrl" max-width="100" />
               </td>
-              <td><v-img :src="item.makerImgUrl" max-width="100" /></td>
+              <td><v-img :src="item.markerImgUrl" max-width="100" /></td>
               <td><v-chip :color="item.color" dark></v-chip></td>
               <td><pre v-html="item.content"></pre></td>
             </tr>
@@ -39,71 +39,101 @@
             <v-toolbar-title>빵집 카테고리</v-toolbar-title>
             <v-divider class="mx-4" inset vertical></v-divider>
             <v-spacer></v-spacer>
-            <v-dialog v-model="dialog" max-width="500px">
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  color="primary"
-                  dark
-                  class="mb-2"
-                  v-bind="attrs"
-                  v-on="on"
-                >
-                  <b>추가</b>
-                </v-btn>
-              </template>
-              <v-card>
-                <v-card-title>
-                  <span class="text-h5">{{ formTitle }}</span>
-                </v-card-title>
-
-                <v-card-text>
-                  <v-container>
-                    <v-row>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.name"
-                          label="Dessert name"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.calories"
-                          label="Calories"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.fat"
-                          label="Fat (g)"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.carbs"
-                          label="Carbs (g)"
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="editedItem.protein"
-                          label="Protein (g)"
-                        ></v-text-field>
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                </v-card-text>
-
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" text @click="close">
-                    Cancel
+            <v-form @submit.prevent="save" v-model="valid">
+              <v-dialog v-model="dialog" max-width="500px" persistent>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+                    color="primary"
+                    dark
+                    class="mb-2"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <b>추가</b>
                   </v-btn>
-                  <v-btn color="blue darken-1" text @click="save">
-                    Save
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
+                </template>
+                <v-card>
+                  <v-card-title>
+                    <span class="text-h5">{{ formTitle }}</span>
+                  </v-card-title>
+
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <v-col cols="12" sm="12" md="12">
+                          <v-text-field
+                            :rules="titleRules"
+                            v-model="editedItem.title"
+                            label="제목"
+                          ></v-text-field>
+                        </v-col>
+                        <v-col cols="12" sm="12" md="12">
+                          <v-textarea
+                            :rules="contentRules"
+                            v-model="editedItem.content"
+                            rows="2"
+                            label="내용"
+                          ></v-textarea>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="6">
+                          <v-file-input
+                            v-model="editedItem.titleColoredImg"
+                            :rules="imageFileRules"
+                            :accept="imageAccept"
+                            placeholder="이미지를 업로드 해주세요."
+                            prepend-icon="mdi-camera"
+                            label="대표 색상 이미지"
+                          ></v-file-input>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="6">
+                          <v-file-input
+                            v-model="editedItem.titleUncoloredImg"
+                            :rules="imageFileRules"
+                            :accept="imageAccept"
+                            placeholder="이미지를 업로드 해주세요."
+                            prepend-icon="mdi-camera"
+                            label="대표 흑백 이미지"
+                          ></v-file-input>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="6">
+                          <v-file-input
+                            v-model="editedItem.markerImg"
+                            :rules="imageFileRules"
+                            :accept="imageAccept"
+                            placeholder="이미지를 업로드 해주세요."
+                            prepend-icon="mdi-camera"
+                            label="마커 이미지"
+                          ></v-file-input>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="6">
+                          <v-label>색상</v-label>
+                          <v-color-picker
+                            required
+                            class="mt-4"
+                            v-model="editedItem.color"
+                            mode="hexa"
+                          ></v-color-picker>
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </v-card-text>
+
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" text @click="close"
+                      >취소
+                    </v-btn>
+                    <v-btn
+                      color="blue darken-1"
+                      text
+                      @click="save"
+                      :disabled="!valid"
+                      >저장
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </v-form>
           </v-toolbar>
         </template>
       </v-data-table>
@@ -113,7 +143,10 @@
 
 <script>
 import draggable from "vuedraggable";
-import { fetchBakeryCategories } from "../api/bakeryCategory";
+import {
+  fetchBakeryCategories,
+  createBakeryCategory
+} from "../api/bakeryCategory";
 export default {
   name: "BakeryCategory",
   components: {
@@ -121,6 +154,8 @@ export default {
   },
   data() {
     return {
+      imageAccept:
+        "image/png, image/jpeg, image/jpg, image/svg, image/webp, image/gif",
       headers: [
         {
           text: "제목",
@@ -137,7 +172,7 @@ export default {
           value: "titleUncoloredImgUrl",
           sortable: false
         },
-        { text: "마커 이미지", value: "makerImgUrl", sortable: false },
+        { text: "마커 이미지", value: "markerImgUrl", sortable: false },
         { text: "색상", value: "color", sortable: false },
         { text: "내용", value: "content", sortable: false }
         // { text: "", value: "actions", sortable: false }
@@ -150,26 +185,30 @@ export default {
       editedIndex: -1,
       editedItem: {
         title: "",
-        titleColoredImgUrl: "",
-        titleUncoloredImgUrl: "",
+        titleColoredImg: [],
+        titleUncoloredImg: [],
+        markerImg: [],
         color: "",
-        makerImgUrl: "",
         content: ""
       },
       defaultItem: {
         title: "",
-        titleColoredImgUrl: "",
-        titleUncoloredImgUrl: "",
+        titleColoredImg: [],
+        titleUncoloredImg: [],
+        markerImg: [],
         color: "",
-        makerImgUrl: "",
         content: ""
-      }
+      },
+      valid: false,
+      titleRules: [v => !!v || "제목을 입력해주세요."],
+      contentRules: [v => !!v || "내용을 입력해주세요."],
+      imageFileRules: [v => !!v || "이미지를 업로드해주세요."]
     };
   },
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "추가" : "Edit Item";
+      return this.editedIndex === -1 ? "빵집 카테고리 추가" : "Edit Item";
     }
   },
 
@@ -213,12 +252,22 @@ export default {
         this.editedIndex = -1;
       });
     },
-    save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.categories[this.editedIndex], this.editedItem);
-      } else {
-        this.categories.push(this.editedItem);
-      }
+    async save() {
+      // 생성
+      const formData = new FormData();
+      console.log("this.editedItem", this.editedItem);
+      formData.append("title", this.editedItem.title);
+      formData.append("titleColoredImg", this.editedItem.titleColoredImg);
+      formData.append("titleUncoloredImg", this.editedItem.titleUncoloredImg);
+      formData.append("markerImg", this.editedItem.markerImg);
+      formData.append("color", this.editedItem.color);
+      formData.append("content", this.editedItem.content);
+
+      console.log("formData", formData);
+      formData.forEach(value => console.log("forEach", value));
+
+      const { data } = await createBakeryCategory(formData);
+      this.categories.push(data);
       this.close();
     }
   }
