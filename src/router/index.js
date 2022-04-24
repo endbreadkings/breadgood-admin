@@ -45,6 +45,13 @@ const routes = [
   },
 
   {
+    path: "/emoji",
+    name: "Emoji",
+    component: () => import("../views/Emoji.vue"),
+    beforeEnter
+  },
+
+  {
     path: "*",
     name: "NotFound",
     component: () => import("../views/NotFound.vue")
