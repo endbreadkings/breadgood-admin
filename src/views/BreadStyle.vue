@@ -74,12 +74,22 @@
                         </v-col>
                         <v-col cols="12" sm="6" md="6">
                           <v-file-input
-                            v-model="editedItem.titleColoredImg"
+                            v-model="editedItem.img"
                             :rules="imageFileRules"
                             :accept="imageAccept"
                             placeholder="이미지를 업로드 해주세요."
                             prepend-icon="mdi-camera"
-                            label="대표 색상 이미지"
+                            label="스타일 이미지"
+                          ></v-file-input>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="6">
+                          <v-file-input
+                            v-model="editedItem.profileImg"
+                            :rules="imageFileRules"
+                            :accept="imageAccept"
+                            placeholder="이미지를 업로드 해주세요."
+                            prepend-icon="mdi-camera"
+                            label="프로필 이미지"
                           ></v-file-input>
                         </v-col>
                         <v-col cols="12" sm="6" md="6">
@@ -153,14 +163,14 @@ export default {
       dialogDelete: false,
       editedIndex: -1,
       editedItem: {
-        title: "",
+        name: "",
         img: [],
         profileImg: [],
         color: "",
         content: ""
       },
       defaultItem: {
-        title: "",
+        name: "",
         img: [],
         profileImg: [],
         color: "",
@@ -225,6 +235,7 @@ export default {
       console.log("this.editedItem", this.editedItem);
       formData.append("name", this.editedItem.name);
       formData.append("img", this.editedItem.img);
+      formData.append("profileImg", this.editedItem.profileImg);
       formData.append("color", this.editedItem.color);
       formData.append("content", this.editedItem.content);
 
