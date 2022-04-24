@@ -56,8 +56,8 @@
                       <v-row>
                         <v-col cols="12" sm="12" md="12">
                           <v-text-field
-                            :rules="titleRules"
-                            v-model="editedItem.title"
+                            :rules="nameRules"
+                            v-model="editedItem.name"
                             label="제목"
                           ></v-text-field>
                         </v-col>
@@ -69,7 +69,7 @@
                             :accept="imageAccept"
                             placeholder="이미지를 업로드 해주세요."
                             prepend-icon="mdi-camera"
-                            label="스타일 이미지"
+                            label="이모지 이미지"
                           ></v-file-input>
                         </v-col>
                       </v-row>
@@ -117,7 +117,7 @@ export default {
           value: "name",
           sortable: false
         },
-        { text: "이미지 이미지", value: "imgUrl", sortable: false }
+        { text: "이모지 이미지", value: "imgUrl", sortable: false }
 
         // { text: "", value: "actions", sortable: false }
       ],
@@ -129,28 +129,21 @@ export default {
       editedIndex: -1,
       editedItem: {
         name: "",
-        img: [],
-        profileImg: [],
-        color: "",
-        content: ""
+        img: []
       },
       defaultItem: {
         name: "",
-        img: [],
-        profileImg: [],
-        color: "",
-        content: ""
+        img: []
       },
       valid: false,
-      titleRules: [v => !!v || "스타일이름을 입력해주세요."],
-      contentRules: [v => !!v || "내용을 입력해주세요."],
+      nameRules: [v => !!v || "이모지명을 입력해주세요."],
       imageFileRules: [v => !!v || "이미지를 업로드해주세요."]
     };
   },
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "최애빵 스타일 추가" : "Edit Item";
+      return this.editedIndex === -1 ? "리뷰 이모지 추가" : "Edit Item";
     }
   },
 
@@ -200,9 +193,6 @@ export default {
       console.log("this.editedItem", this.editedItem);
       formData.append("name", this.editedItem.name);
       formData.append("img", this.editedItem.img);
-      formData.append("profileImg", this.editedItem.profileImg);
-      formData.append("color", this.editedItem.color);
-      formData.append("content", this.editedItem.content);
 
       console.log("formData", formData);
       formData.forEach(value => console.log("forEach", value));
