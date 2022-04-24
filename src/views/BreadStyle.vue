@@ -23,6 +23,7 @@
             <tr v-for="(item, index) in props.items" :key="index">
               <td>{{ item.name }}</td>
               <td><v-img :src="item.imgUrl" max-width="100" /></td>
+              <td><v-img :src="item.profileImgUrl" max-width="100" /></td>
               <td><v-chip :color="item.color" dark></v-chip></td>
               <td><pre v-html="item.content"></pre></td>
             </tr>
@@ -82,26 +83,6 @@
                           ></v-file-input>
                         </v-col>
                         <v-col cols="12" sm="6" md="6">
-                          <v-file-input
-                            v-model="editedItem.titleUncoloredImg"
-                            :rules="imageFileRules"
-                            :accept="imageAccept"
-                            placeholder="이미지를 업로드 해주세요."
-                            prepend-icon="mdi-camera"
-                            label="대표 흑백 이미지"
-                          ></v-file-input>
-                        </v-col>
-                        <v-col cols="12" sm="6" md="6">
-                          <v-file-input
-                            v-model="editedItem.img"
-                            :rules="imageFileRules"
-                            :accept="imageAccept"
-                            placeholder="이미지를 업로드 해주세요."
-                            prepend-icon="mdi-camera"
-                            label="마커 이미지"
-                          ></v-file-input>
-                        </v-col>
-                        <v-col cols="12" sm="6" md="6">
                           <v-label>색상</v-label>
                           <v-color-picker
                             required
@@ -155,7 +136,12 @@ export default {
           value: "title",
           sortable: false
         },
-        { text: "마커 이미지", value: "imgUrl", sortable: false },
+        { text: "최애빵 스타일 이미지", value: "imgUrl", sortable: false },
+        {
+          text: "최애빵 프로필 이미지",
+          value: "profileImgUrl",
+          sortable: false
+        },
         { text: "색상", value: "color", sortable: false },
         { text: "내용", value: "content", sortable: false }
         // { text: "", value: "actions", sortable: false }
@@ -169,17 +155,19 @@ export default {
       editedItem: {
         title: "",
         img: [],
+        profileImg: [],
         color: "",
         content: ""
       },
       defaultItem: {
         title: "",
         img: [],
+        profileImg: [],
         color: "",
         content: ""
       },
       valid: false,
-      titleRules: [v => !!v || "이모지명을 입력해주세요."],
+      titleRules: [v => !!v || "스타일이름을 입력해주세요."],
       contentRules: [v => !!v || "내용을 입력해주세요."],
       imageFileRules: [v => !!v || "이미지를 업로드해주세요."]
     };
