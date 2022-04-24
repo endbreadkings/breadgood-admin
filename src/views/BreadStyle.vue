@@ -59,9 +59,9 @@
                       <v-row>
                         <v-col cols="12" sm="12" md="12">
                           <v-text-field
-                            :rules="titleRules"
-                            v-model="editedItem.title"
-                            label="제목"
+                            :rules="nameRules"
+                            v-model="editedItem.name"
+                            label="스타일명"
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="12" md="12">
@@ -143,7 +143,7 @@ export default {
       headers: [
         {
           text: "제목",
-          value: "title",
+          value: "name",
           sortable: false
         },
         { text: "최애빵 스타일 이미지", value: "imgUrl", sortable: false },
@@ -177,7 +177,7 @@ export default {
         content: ""
       },
       valid: false,
-      titleRules: [v => !!v || "스타일이름을 입력해주세요."],
+      nameRules: [v => !!v || "스타일이름을 입력해주세요."],
       contentRules: [v => !!v || "내용을 입력해주세요."],
       imageFileRules: [v => !!v || "이미지를 업로드해주세요."]
     };
