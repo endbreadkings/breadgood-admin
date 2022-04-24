@@ -32,15 +32,8 @@ const routes = [
 
   {
     path: "/bakery/category",
-    name: "BakeryCategory",
+    name: "bakeryCategory",
     component: () => import("../views/BakeryCategory.vue"),
-    beforeEnter
-  },
-
-  {
-    path: "/bread/style",
-    name: "BreadStyle",
-    component: () => import("../views/BreadStyle.vue"),
     beforeEnter
   },
 
