@@ -52,6 +52,27 @@ const routes = [
   },
 
   {
+    path: "/terms",
+    name: "Terms",
+    component: () => import("../views/Terms.vue"),
+    beforeEnter
+  },
+
+  {
+    path: "/terms/:termsTypeId",
+    name: "TermDetails",
+    component: () => import("../views/TermDetails.vue"),
+    beforeEnter
+  },
+
+  {
+    path: "/terms/:id/form",
+    name: "TermForm",
+    component: () => import("../views/TermForm.vue"),
+    beforeEnter
+  },
+
+  {
     path: "*",
     name: "NotFound",
     component: () => import("../views/NotFound.vue")
