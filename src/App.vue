@@ -77,7 +77,7 @@ export default {
       {
         title: "리뷰 이모지 관리",
         icon: "mdi-emoticon",
-        link: "/bakery/emoji"
+        link: "/emoji"
       },
       {
         title: "빵집 카테고리 관리",
