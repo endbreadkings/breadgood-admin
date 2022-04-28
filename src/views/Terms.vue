@@ -30,6 +30,11 @@
             <v-toolbar-title>약관타입</v-toolbar-title>
             <v-divider class="mx-4" inset vertical></v-divider>
             <v-spacer></v-spacer>
+            <router-link :to="`/termstype/form`" tag="v-btn">
+              <v-btn color="primary" dark class="mb-2">
+                <b>새로만들기</b>
+              </v-btn>
+            </router-link>
           </v-toolbar>
         </template>
       </v-data-table>

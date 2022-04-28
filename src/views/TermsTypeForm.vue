@@ -1,8 +1,20 @@
 <template>
   <form>
     <v-toolbar>
-      <v-toolbar-title>약관등록하기</v-toolbar-title>
+      <v-toolbar-title>약관최초 등록하기</v-toolbar-title>
     </v-toolbar>
+    <v-text-field
+      prepend-icon="mdi-text"
+      v-model="name"
+      label="약관타입명"
+    ></v-text-field>
+    <v-checkbox
+      v-model="required"
+      label="필수선택여부"
+      required
+      @change="$v.checkbox.$touch()"
+      @blur="$v.checkbox.$touch()"
+    ></v-checkbox>
     <v-menu
       ref="menu"
       v-model="menu"
@@ -71,7 +83,7 @@ import {
 } from "tiptap-vuetify";
 
 export default {
-  name: "TermForm",
+  name: "termsTypeForm",
   components: { TiptapVuetify },
   data: () => ({
     // declare extensions you want to use
@@ -108,7 +120,8 @@ export default {
     activePicker: null,
     date: new Date().toISOString().substr(0, 10),
     menu: false,
-    termsTypeId: null
+    required: false,
+    name: ""
   }),
   watch: {
     menu(val) {
@@ -127,14 +140,16 @@ export default {
         .substr(0, 10);
     }
   },
-  created() {
-    this.termsTypeId = this.$route.params.termsTypeId;
-  },
+  created() {},
   methods: {
     save(date) {
       this.$refs.menu.save(date);
     },
     async submit() {
+      if (!this.name) {
+        alert("약관타입명을 입력해주세요.");
+        return;
+      }
       if (!this.content) {
         alert("내용을 입력해주세요.");
         return;
@@ -149,16 +164,17 @@ export default {
         return;
       }
 
-      const termsForm = {
-        termsTypeId: this.termsTypeId,
+      const termsTypeForm = {
+        name: this.name,
+        required: this.required,
         content: this.content,
         executionDate: this.date
       };
 
-      console.log("termsForm", termsForm);
+      console.log("termsTypeForm", termsTypeForm);
 
       try {
-        await createTerms(termsForm);
+        await createTerms(termsTypeForm);
         alert("정상적으로 저장되었습니다.");
       } catch (error) {
         alert("저장하는데 실패하였습니다.");

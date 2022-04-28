@@ -33,9 +33,14 @@
             <v-toolbar-title>{{ termsTitle }}</v-toolbar-title>
             <v-divider class="mx-4" inset vertical></v-divider>
             <v-spacer></v-spacer>
-            <v-btn color="primary" dark class="mb-2">
-              <b>추가</b>
-            </v-btn>
+            <router-link
+              :to="`/terms/${$route.params.termsTypeId}/form`"
+              tag="v-btn"
+            >
+              <v-btn color="primary" dark class="mb-2">
+                <b>추가</b>
+              </v-btn>
+            </router-link>
           </v-toolbar>
         </template>
       </v-data-table>
@@ -61,20 +66,21 @@ export default {
 
         // { text: "", value: "actions", sortable: false }
       ],
-      termsDetail: null,
-      isLoading: true
+      isLoading: true,
+      termsTitle: "",
+      termsList: [],
+      termsTypeId: null
     };
   },
 
   async created() {
+    this.termsTypeId = this.$route.params.termsTypeId;
     await this.initialize();
     this.isLoading = false;
   },
   methods: {
     async initialize() {
-      const termsTypeId = this.$route.params.termsTypeId;
-
-      const { data } = await fetchTermsDetail(termsTypeId);
+      const { data } = await fetchTermsDetail(this.termsTypeId);
       this.termsTitle = data.title;
       this.termsList = data.termsList;
     }
