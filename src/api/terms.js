@@ -30,4 +30,9 @@ function fetchTermsDetail(termsTypeId) {
   };
   return result;
 }
-export { fetchTermsTypes, fetchTermsDetail };
+
+function createTerms(termsForm) {
+  return authInstance.post("/terms", termsForm);
+}
+
+export { fetchTermsTypes, fetchTermsDetail, createTerms };

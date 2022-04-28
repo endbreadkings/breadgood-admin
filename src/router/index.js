@@ -73,6 +73,13 @@ const routes = [
   },
 
   {
+    path: "/termstype/form",
+    name: "TermsTypeForm",
+    component: () => import("../views/TermsTypeForm.vue"),
+    beforeEnter
+  },
+
+  {
     path: "*",
     name: "NotFound",
     component: () => import("../views/NotFound.vue")
