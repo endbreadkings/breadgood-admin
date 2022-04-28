@@ -59,9 +59,9 @@
                       <v-row>
                         <v-col cols="12" sm="12" md="12">
                           <v-text-field
-                            :rules="titleRules"
-                            v-model="editedItem.title"
-                            label="제목"
+                            :rules="nameRules"
+                            v-model="editedItem.name"
+                            label="스타일명"
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="12" md="12">
@@ -74,12 +74,22 @@
                         </v-col>
                         <v-col cols="12" sm="6" md="6">
                           <v-file-input
-                            v-model="editedItem.titleColoredImg"
+                            v-model="editedItem.img"
                             :rules="imageFileRules"
                             :accept="imageAccept"
                             placeholder="이미지를 업로드 해주세요."
                             prepend-icon="mdi-camera"
-                            label="대표 색상 이미지"
+                            label="스타일 이미지"
+                          ></v-file-input>
+                        </v-col>
+                        <v-col cols="12" sm="6" md="6">
+                          <v-file-input
+                            v-model="editedItem.profileImg"
+                            :rules="imageFileRules"
+                            :accept="imageAccept"
+                            placeholder="이미지를 업로드 해주세요."
+                            prepend-icon="mdi-camera"
+                            label="프로필 이미지"
                           ></v-file-input>
                         </v-col>
                         <v-col cols="12" sm="6" md="6">
@@ -133,7 +143,7 @@ export default {
       headers: [
         {
           text: "제목",
-          value: "title",
+          value: "name",
           sortable: false
         },
         { text: "최애빵 스타일 이미지", value: "imgUrl", sortable: false },
@@ -153,21 +163,21 @@ export default {
       dialogDelete: false,
       editedIndex: -1,
       editedItem: {
-        title: "",
+        name: "",
         img: [],
         profileImg: [],
         color: "",
         content: ""
       },
       defaultItem: {
-        title: "",
+        name: "",
         img: [],
         profileImg: [],
         color: "",
         content: ""
       },
       valid: false,
-      titleRules: [v => !!v || "스타일이름을 입력해주세요."],
+      nameRules: [v => !!v || "스타일이름을 입력해주세요."],
       contentRules: [v => !!v || "내용을 입력해주세요."],
       imageFileRules: [v => !!v || "이미지를 업로드해주세요."]
     };
@@ -225,6 +235,7 @@ export default {
       console.log("this.editedItem", this.editedItem);
       formData.append("name", this.editedItem.name);
       formData.append("img", this.editedItem.img);
+      formData.append("profileImg", this.editedItem.profileImg);
       formData.append("color", this.editedItem.color);
       formData.append("content", this.editedItem.content);
 
