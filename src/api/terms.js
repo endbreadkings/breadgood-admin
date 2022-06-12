@@ -5,34 +5,11 @@ function fetchTermsTypes() {
 }
 
 function fetchTermsDetail(termsTypeId) {
-  // return authInstance.get(`/termsType/${termsTypeId}`);
-
-  console.log("termsTypeId", termsTypeId);
-
-  const result = {
-    data: {
-      title: "개인정보약관",
-      termsList: [
-        {
-          content: "내용1",
-          executionDate: "2022-12-31"
-        },
-        {
-          content: "내용2",
-          executionDate: "2022-12-12"
-        },
-        {
-          content: "내용1",
-          executionDate: "2022-12-5"
-        }
-      ]
-    }
-  };
-  return result;
+  return authInstance.get(`/termsType/${termsTypeId}`);
 }
 
 function createTerms(termsForm) {
-  return authInstance.post("/terms", termsForm);
+  return authInstance.post("/termsType", termsForm);
 }
 
 export { fetchTermsTypes, fetchTermsDetail, createTerms };
