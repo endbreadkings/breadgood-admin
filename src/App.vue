@@ -83,6 +83,11 @@ export default {
         title: "빵집 카테고리 관리",
         icon: "mdi-shape",
         link: "/bakery/category"
+      },
+      {
+        title: "빵집 관리",
+        icon: "mdi-glasses",
+        link: "/bakery"
       }
     ]
   }),

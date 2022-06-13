@@ -80,6 +80,13 @@ const routes = [
   },
 
   {
+    path: "/bakery",
+    name: "Bakery",
+    component: () => import("../views/Bakery.vue"),
+    beforeEnter
+  },
+
+  {
     path: "*",
     name: "NotFound",
     component: () => import("../views/NotFound.vue")

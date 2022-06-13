@@ -17,6 +17,7 @@ function createInstanceWithAuth(url) {
 
 export const instance = createInstance();
 export const bakeryCategory = createInstanceWithAuth("bakeryCategory");
+export const bakery = createInstanceWithAuth("bakery");
 export const breadStyle = createInstanceWithAuth("breadstyle");
 export const emoji = createInstanceWithAuth("emoji");
 export const authInstance = createInstanceWithAuth("");
