@@ -8,6 +8,7 @@
         calculate-widths
         item-key="id"
         hide-default-footer
+        :items-per-page="30"
         :loading="isLoading"
         loading-text="Loading... Please wait"
       >
