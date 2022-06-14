@@ -6,12 +6,21 @@
         :items="bakeries"
         class="elevation-1 "
         calculate-widths
+        multi-sort
         item-key="id"
-        hide-default-footer
-        :items-per-page="30"
+        :items-per-page="15"
         :loading="isLoading"
         loading-text="Loading... Please wait"
+        :search="search"
+        :custom-filter="filterOnlyCapsText"
       >
+        <template v-slot:top>
+          <v-text-field
+            v-model="search"
+            label="Search "
+            class="mx-4"
+          ></v-text-field>
+        </template>
         <template v-slot:body="props">
           <tr v-for="(item, index) in props.items" :key="index">
             <td>{{ item.id }}</td>
@@ -49,22 +58,27 @@ export default {
     return {
       headers: [
         {
-          text: "빵집번호"
+          text: "빵집번호",
+          value: "id"
         },
         {
-          text: "제목"
+          text: "제목",
+          value: "title"
         },
         {
-          text: "작성자"
+          text: "작성자",
+          value: "user.nickName"
         },
         {
-          text: "주소"
+          text: "주소",
+          value: "address.roadAddress"
         },
-        { text: "생성일" },
+        { text: "생성일", value: "createdAt" },
         { text: "", value: "actions", sortable: false }
       ],
       bakeries: [],
-      isLoading: true
+      isLoading: true,
+      search: ""
     };
   },
 
@@ -107,6 +121,17 @@ export default {
       await deleteBakery(item.id);
       this.bakeries.splice(index, 1);
       alert("삭제완료! 다신복구 X");
+    },
+    filterOnlyCapsText(value, search) {
+      return (
+        value != null &&
+        search != null &&
+        typeof value === "string" &&
+        value
+          .toString()
+          .toLocaleUpperCase()
+          .indexOf(search) !== -1
+      );
     },
     async save() {
       // // 생성
