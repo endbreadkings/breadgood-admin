@@ -20,8 +20,7 @@
               <v-expansion-panel-header>
                 {{ item.executionDate }} 적용된 약관
               </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                {{ item.content }}
+              <v-expansion-panel-content v-html="item.content">
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>

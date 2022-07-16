@@ -1,0 +1,111 @@
+{"log":"[PROTOCOL] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] C: RCPT TO:\u003cdoyoung0205@naver.com\u003e state=1\n","stream":"stdout","time":"2022-06-28T02:27:31.432828358Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running rcpt hooks\n","stream":"stdout","time":"2022-06-28T02:27:31.432855843Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running rcpt hook in access plugin\n","stream":"stdout","time":"2022-06-28T02:27:31.432888257Z"}
+{"log":"[DEBUG] [-] [access] empty file: rcpt_to.access.whitelist_regex\n","stream":"stdout","time":"2022-06-28T02:27:31.432893027Z"}
+{"log":"[DEBUG] [-] [access] empty file: rcpt_to.access.blacklist_regex\n","stream":"stdout","time":"2022-06-28T02:27:31.432896751Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] hook=rcpt plugin=access function=rcpt_to_access params=\"\u003cdoyoung0205@naver.com\u003e\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:31.432987297Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running rcpt hook in access plugin\n","stream":"stdout","time":"2022-06-28T02:27:31.433038799Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] hook=rcpt plugin=access function=any params=\"\u003cdoyoung0205@naver.com\u003e\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:31.433231471Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running rcpt hook in rcpt_to.in_host_list plugin\n","stream":"stdout","time":"2022-06-28T02:27:31.433260855Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [rcpt_to.in_host_list] Checking if \u003cdoyoung0205@naver.com\u003e host is in host_list\n","stream":"stdout","time":"2022-06-28T02:27:31.433264862Z"}
+{"log":"[DEBUG] [-] [rcpt_to.in_host_list] checking naver.com in config/host_list\n","stream":"stdout","time":"2022-06-28T02:27:31.433296614Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] hook=rcpt plugin=rcpt_to.in_host_list function=hook_rcpt params=\"\u003cdoyoung0205@naver.com\u003e\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:31.433343712Z"}
+{"log":"[NOTICE] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] recipient \u003cdoyoung0205@naver.com\u003e code=CONT msg=\"\" sender=\"mail@29cm.co.kr\"\n","stream":"stdout","time":"2022-06-28T02:27:31.433408029Z"}
+{"log":"[PROTOCOL] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] S: 550 I cannot deliver mail for \u003cdoyoung0205@naver.com\u003e\n","stream":"stdout","time":"2022-06-28T02:27:31.433471322Z"}
+{"log":"[PROTOCOL] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] C: RSET state=1\n","stream":"stdout","time":"2022-06-28T02:27:31.438036355Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running rset hooks\n","stream":"stdout","time":"2022-06-28T02:27:31.438062821Z"}
+{"log":"[PROTOCOL] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] S: 250 OK\n","stream":"stdout","time":"2022-06-28T02:27:31.438207598Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running reset_transaction hooks\n","stream":"stdout","time":"2022-06-28T02:27:31.438401005Z"}
+{"log":"[PROTOCOL] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] C: QUIT state=1\n","stream":"stdout","time":"2022-06-28T02:27:31.444379271Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running quit hooks\n","stream":"stdout","time":"2022-06-28T02:27:31.444392236Z"}
+{"log":"[PROTOCOL] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] S: 221 nmail02.29cm.co.kr closing connection. Have a jolly good day.\n","stream":"stdout","time":"2022-06-28T02:27:31.444463476Z"}
+{"log":"[DEBUG] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] running disconnect hooks\n","stream":"stdout","time":"2022-06-28T02:27:31.444555716Z"}
+{"log":"[NOTICE] [66FDB81B-075E-4907-AFE0-2F1A18E68805.1] [core] disconnect ip=10.187.2.72 rdns=\"NXDOMAIN\" helo=\"user-api-29cm-5c459cbb86-dt6pf\" relay=N early=N esmtp=N tls=N pipe=N errors=0 txns=1 rcpts=0/0/1 msgs=0/0/0 bytes=0 lr=\"550 I cannot deliver mail for \u003cdoyoung0205@naver.com\u003e\" time=0.217\n","stream":"stdout","time":"2022-06-28T02:27:31.444713713Z"}
+{"log":"[DEBUG] [-] [core] [outbound] [outbound::25:125.209.222.14:undefined:50] removeIdle() destroying obj - now:1656383257550 timeout:1656383257521\n","stream":"stdout","time":"2022-06-28T02:27:37.550551237Z"}
+{"log":"[DEBUG] [-] [core] [outbound] destroying pool entry for 125.209.222.14:25\n","stream":"stdout","time":"2022-06-28T02:27:37.550605691Z"}
+{"log":"[PROTOCOL] [-] [core] [outbound] C: QUIT\n","stream":"stdout","time":"2022-06-28T02:27:37.550623244Z"}
+{"log":"[DEBUG] [-] [core] [outbound] [outbound::25:125.209.222.14:undefined:50] removeIdle() all objects removed\n","stream":"stdout","time":"2022-06-28T02:27:37.550735165Z"}
+{"log":"[INFO] [-] [core] [outbound] Remote end half closed juring destroy()\n","stream":"stdout","time":"2022-06-28T02:27:37.555884012Z"}
+{"log":"[NOTICE] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] connect ip=10.187.2.72 port=31680 local_ip=:: local_port=25\n","stream":"stdout","time":"2022-06-28T02:27:38.728455337Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running connect_init hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.728503527Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running connect_init_respond\n","stream":"stdout","time":"2022-06-28T02:27:38.728508456Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running lookup_rdns hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.728511867Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running connect hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.730588543Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running connect hook in access plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.730635261Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking 10.187.2.72 against connect.rdns_access.whitelist\n","stream":"stdout","time":"2022-06-28T02:27:38.73066421Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking 10.187.2.72 against connect.rdns_access.whitelist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.730680442Z"}
+{"log":"[DEBUG] [-] [access] empty file: connect.rdns_access.whitelist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.730714382Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking nxdomain against connect.rdns_access.whitelist\n","stream":"stdout","time":"2022-06-28T02:27:38.730732569Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking nxdomain against connect.rdns_access.whitelist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.73078308Z"}
+{"log":"[DEBUG] [-] [access] empty file: connect.rdns_access.whitelist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.730808125Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking 10.187.2.72 against connect.rdns_access.blacklist\n","stream":"stdout","time":"2022-06-28T02:27:38.730824506Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking 10.187.2.72 against connect.rdns_access.blacklist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.730839671Z"}
+{"log":"[DEBUG] [-] [access] empty file: connect.rdns_access.blacklist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.730855347Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking nxdomain against connect.rdns_access.blacklist\n","stream":"stdout","time":"2022-06-28T02:27:38.730886019Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] checking nxdomain against connect.rdns_access.blacklist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.730902787Z"}
+{"log":"[DEBUG] [-] [access] empty file: connect.rdns_access.blacklist_regex\n","stream":"stdout","time":"2022-06-28T02:27:38.730936861Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=connect plugin=access function=rdns_access params=\"\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.73106427Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running connect hook in access plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.731084656Z"}
+{"log":"[INFO] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] msg:unlisted(conn), fail:invalid domain: NXDOMAIN\n","stream":"stdout","time":"2022-06-28T02:27:38.731161229Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=connect plugin=access function=any params=\"\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.731180247Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running connect hook in max_unrecognized_commands plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.731213857Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=connect plugin=max_unrecognized_commands function=hook_connect params=\"\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.73135378Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 220 nmail02.29cm.co.kr ESMTP Haraka 2.8.14 ready\n","stream":"stdout","time":"2022-06-28T02:27:38.73146071Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] C: ehlo worker-celery-29cm-6897b7465f-czmvj state=1\n","stream":"stdout","time":"2022-06-28T02:27:38.733658176Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.733740763Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in access plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.733832898Z"}
+{"log":"[INFO] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [access] msg:unlisted(conn), fail:invalid domain: NXDOMAIN, invalid domain: worker-celery-29cm-6897b7465f-czmvj\n","stream":"stdout","time":"2022-06-28T02:27:38.733922147Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=access function=any params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.733941445Z"}
+
+
+
+
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734010281Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=proto_mismatch_esmtp params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734061326Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734093015Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=init params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.7341987Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734218165Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=match_re params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734272526Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734293012Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=bare_ip params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.73436083Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734378873Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=dynamic params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734427333Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734451296Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=big_company params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734501024Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734542505Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=literal_mismatch params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734577158Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734635401Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=valid_hostname params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734680801Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734735204Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=rdns_match params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734784664Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734811417Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=forward_dns params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.734875446Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.734899897Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=host_mismatch params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.735007475Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running ehlo hook in helo.checks plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.735025884Z"}
+{"log":"[INFO] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [helo.checks] multi: true, skip:proto_mismatch(private), host_mismatch(private)\n","stream":"stdout","time":"2022-06-28T02:27:38.735077542Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=ehlo plugin=helo.checks function=emit_log params=\"worker-celery-29cm-6897b7465f-czmvj\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.735095424Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running capabilities hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.735169695Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running capabilities hook in auth/flat_file plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.735207374Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=capabilities plugin=auth/flat_file function=hook_capabilities params=\"\" retval=CONT msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.735285187Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 250-nmail02.29cm.co.kr Hello [10.187.2.72], Haraka is at your service.\n","stream":"stdout","time":"2022-06-28T02:27:38.735349811Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 250-PIPELINING\n","stream":"stdout","time":"2022-06-28T02:27:38.735373403Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 250-8BITMIME\n","stream":"stdout","time":"2022-06-28T02:27:38.735389386Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 250-SMTPUTF8\n","stream":"stdout","time":"2022-06-28T02:27:38.735404485Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 250-SIZE 0\n","stream":"stdout","time":"2022-06-28T02:27:38.735442611Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 250 AUTH CRAM-MD5\n","stream":"stdout","time":"2022-06-28T02:27:38.73546578Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] C: AUTH CRAM-MD5 state=1\n","stream":"stdout","time":"2022-06-28T02:27:38.737457356Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running unrecognized_command hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.737516821Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running unrecognized_command hook in auth/flat_file plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.737565847Z"}
+{"log":"[INFO] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [auth/flat_file] ticket: \u003cac0d8.181a822c071@nmail02.29cm.co.kr\u003e\n","stream":"stdout","time":"2022-06-28T02:27:38.737741471Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 334 PGFjMGQ4LjE4MWE4MjJjMDcxQG5tYWlsMDIuMjljbS5jby5rcj4=\n","stream":"stdout","time":"2022-06-28T02:27:38.737834416Z"}
+{"log":"[INFO] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=unrecognized_command plugin=auth/flat_file function=hook_unrecognized_command params=\"AUTH\" retval=OK msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.737952024Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] C: c210cDI5Y21fdXNlciA2ZmNiYzZhMzE1NDk5OGM1MWIzZjQ4MzM5NTI2NDY3ZQ== state=1\n","stream":"stdout","time":"2022-06-28T02:27:38.73985342Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running unrecognized_command hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.739890855Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] running unrecognized_command hook in auth/flat_file plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.739957459Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] S: 235 Authentication successful\n","stream":"stdout","time":"2022-06-28T02:27:38.740223263Z"}
+{"log":"[INFO] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] hook=unrecognized_command plugin=auth/flat_file function=hook_unrecognized_command params=\"c210cDI5Y21fdXNlciA2ZmNiYzZhMzE1NDk5OGM1MWIzZjQ4MzM5NTI2NDY3ZQ==\" retval=OK msg=\"\"\n","stream":"stdout","time":"2022-06-28T02:27:38.740421579Z"}
+{"log":"[PROTOCOL] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE] [core] C: mail FROM:\u003cmail@29cm.co.kr\u003e size=55915 state=1\n","stream":"stdout","time":"2022-06-28T02:27:38.748511455Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE.1] [core] running mail hooks\n","stream":"stdout","time":"2022-06-28T02:27:38.748984252Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE.1] [core] running mail hook in access plugin\n","stream":"stdout","time":"2022-06-28T02:27:38.749011417Z"}
+{"log":"[DEBUG] [464DA7EC-3FEE-480E-B74A-9F32B4C332EE.1] [access] checking mail@29cm.co.kr against mail_from.access.whitelist\n","stream":"stdout","time":"2022-06-28T02:27:38.749064052Z"}
